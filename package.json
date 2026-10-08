@@ -44,5 +44,15 @@
   },
   "engines": {
     "node": ">= 22.11.0"
+  },
+  "codegenConfig": {
+    "name": "HealthSyncSpec",
+    "type": "modules",
+    "jsSrcsDir": "src/specs",
+    "ios": {
+      "modulesProvider": {
+        "NativeHealthSync": "RCTNativeHealthSync"
+      }
+    }
   }
 }

@@ -118,6 +118,20 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+    // ---- Background health sync (src/main/java/com/testhello/healthsync) ----
+    // WorkManager: deferrable, guaranteed background jobs (periodic sync, upload).
+    implementation("androidx.work:work-runtime-ktx:2.10.1")
+    // Health Connect: Android's on-device health database (steps, heart rate).
+    implementation("androidx.health.connect:connect-client:1.1.0")
+    // Wearable Data Layer: messages/data from the Wear OS companion app.
+    implementation("com.google.android.gms:play-services-wearable:19.0.0")
+    // `await()` for Play services Tasks inside coroutines.
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
+    // ProcessLifecycleOwner: tells us if the app is in foreground or background.
+    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
+    // ActivityResultRegistry, used for the Health Connect permission screen.
+    implementation("androidx.activity:activity-ktx:1.9.3")
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

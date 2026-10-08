@@ -59,6 +59,21 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
+		<!-- Needed for BGAppRefreshTask. -->
+		<string>fetch</string>
+		<!-- Needed for BGProcessingTask. -->
+		<string>processing</string>
 	</array>
+	<!-- Every BGTask identifier must be listed here, or BGTaskScheduler.submit throws. -->
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.testhello.health.refresh</string>
+		<string>com.testhello.health.upload</string>
+	</array>
+	<!-- Shown in the HealthKit permission sheet. Apple rejects vague wording. -->
+	<key>NSHealthShareUsageDescription</key>
+	<string>We read your heart rate and steps to share them with your care team and alert you to unusual readings.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We save readings from your connected devices to Apple Health.</string>
 </dict>
 </plist>

@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       FirebaseApp.configure()
     }
 
+    // Background health sync: register BGTask handlers, restart HealthKit
+    // observer queries and activate WCSession. This must happen before this
+    // method returns, on every launch, because iOS may have launched the app
+    // in the background just to deliver HealthKit data or run a BGTask.
+    HealthSyncBridge.shared.applicationDidFinishLaunching()
+
     let delegate = ReactNativeDelegate()
     let factory = RCTReactNativeFactory(delegate: delegate)
     delegate.dependencyProvider = RCTAppDependencyProvider()

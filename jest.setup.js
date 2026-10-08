@@ -25,3 +25,30 @@ jest.mock('@react-native-firebase/messaging', () => ({
   requestPermission: jest.fn(),
   setBackgroundMessageHandler: jest.fn(),
 }));
+
+// Our own Turbo Module (src/specs/NativeHealthSync.ts) has no native side in Jest.
+jest.mock('./src/specs/NativeHealthSync', () => ({
+  __esModule: true,
+  default: {
+    requestHealthPermissions: jest.fn(() => Promise.resolve(true)),
+    schedulePeriodicSync: jest.fn(() => Promise.resolve()),
+    runSyncNow: jest.fn(() => Promise.resolve()),
+    cancelScheduledWork: jest.fn(() => Promise.resolve()),
+    enableHealthBackgroundDelivery: jest.fn(() => Promise.resolve(false)),
+    startLiveSession: jest.fn(() => Promise.resolve()),
+    stopLiveSession: jest.fn(() => Promise.resolve()),
+    getWearableStatus: jest.fn(() =>
+      Promise.resolve({
+        supported: false,
+        paired: false,
+        appInstalled: false,
+        reachable: false,
+      }),
+    ),
+    simulateWearableSample: jest.fn(),
+    getPendingSampleCount: jest.fn(() => Promise.resolve(0)),
+    getActivityLog: jest.fn(() => Promise.resolve([])),
+    clearActivityLog: jest.fn(() => Promise.resolve()),
+    onHealthEvent: jest.fn(() => ({ remove: jest.fn() })),
+  },
+}));

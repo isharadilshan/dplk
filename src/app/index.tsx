@@ -7,6 +7,7 @@ import DetailsScreen from '../screens/DetailsScreen';
 import { HelloWorldScreen } from '../screens/HelloWorldScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
 import { NotificationDetailScreen } from '../screens/NotificationDetailScreen';
+import { HealthSyncScreen } from '../screens/HealthSyncScreen';
 import { navigationRef, type AppStackParamList } from './navigationRef';
 import {
   flushPendingNotification,
@@ -32,6 +33,11 @@ function MainTabs() {
         name="Notifications"
         component={NotificationsScreen}
         options={{ title: 'Health Notifications' }}
+      />
+      <BottomTabs.Screen
+        name="Background"
+        component={HealthSyncScreen}
+        options={{ title: 'Background Sync' }}
       />
       <BottomTabs.Screen name="Profile" component={DetailsScreen} />
     </BottomTabs.Navigator>
